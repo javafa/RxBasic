@@ -26,7 +26,14 @@ public class MainActivity extends AppCompatActivity {
                     // 네트웍을 통해서 데이터를 긁어온다
                     // 반복문을 돌면서 -----------------------
                     // for (네트웍에서 가져온 데이터) { json
+                    for(int i=0 ; i<3 ; i++) {
                         subscriber.onNext("Hello RxAndroid !!");
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     // }
                     // --------------------------------------
                     subscriber.onCompleted();
@@ -71,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
         // 옵저버를 등록하는 함수 - 최종진화형(람다식)
         simpleObservable.subscribe(
                 (string) -> {Toast.makeText(MainActivity.this, "[Observer3] "+string, Toast.LENGTH_SHORT).show();}
-                ,(error) -> {Log.e(TAG, "[Observer2] error: " + error.getMessage());}
-                ,() -> {Log.d(TAG, "[Observer2] complete");}
+                ,(error) -> {Log.e(TAG, "[Observer3] error: " + error.getMessage());}
+                ,() -> {Log.d(TAG, "[Observer3] complete");}
         );
     }
 }
